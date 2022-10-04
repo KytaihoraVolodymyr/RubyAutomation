@@ -6,6 +6,7 @@ And(/^I search "([^"]*)"$/) do |query|
 
     search_box = find('.gLFyf.gsfi')
     search_btn = find('.gNO89b')
+    
     search_box.set(query)
     search_btn.click
 
