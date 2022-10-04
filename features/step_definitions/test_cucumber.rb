@@ -1,16 +1,18 @@
-Given(/^I visit google$/) do 
-    visit 'http://www.google.com'
+Given(/^I visit google$/) do
+    visit 'https://www.google.com'
 end
 
 And(/^I search "([^"]*)"$/) do |query|
-    search_box = '#lst-ib'
-    search_btn = '.lsb'
 
-    find(search_box).set query
-    find(search_btn).click
+    search_box = find('.gLFyf.gsfi')
+    search_btn = find('.gNO89b')
+    search_box.set(query)
+    search_btn.click
+
+    paw = find('img.MsQkWd')
+    paw.click
 end
 
 Then(/^I wait$/) do
-    require pry
-    binding.pry
+    sleep 5
 end

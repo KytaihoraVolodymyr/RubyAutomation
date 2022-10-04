@@ -1,20 +1,14 @@
-require 'capybara'
 require 'capybara/cucumber'
 require 'selenium-webdriver'
-require 'capybara/session'
-require 'capybara/dsl'
+require 'pry'
+require 'rspec'
 
-# Before do
-#     @driver = Selenium::WebDriver.for :chrome
-# end
-
-# After do
-#     @driver.quit
-# end
-
-#Capybara.dafault_driver = :selenium
-Capybara.register_driver :selenium do |app|
-    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+def options
+    Selenium::WebDriver::Chrome::Options.new(args: %w[widow-size=1800,1000])
 end
 
-Capybara.javascript_driver = :chrome
+Capybara.default_driver = :selenium
+
+Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, {browser: :chrome, options: options })
+end

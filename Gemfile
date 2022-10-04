@@ -1,6 +1,7 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-group :test do
-  gem 'cucumber', '~> 7.1.0'
-  gem 'rspec', '~> 3.10.0'
-end
+gem 'cucumber'
+gem 'capybara'
+gem 'selenium-webdriver'
+gem 'pry'
+gem 'rspec'
