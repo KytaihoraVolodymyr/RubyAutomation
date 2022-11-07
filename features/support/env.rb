@@ -17,7 +17,7 @@ Capybara.register_driver :selenium do |app|
 end
 
 Before do |scenario|
-    p 'Hi!'
+    p 'Before test'
     starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 end
 
@@ -28,5 +28,5 @@ After do
     puts "Test start #{starting}"
     puts "Test end #{ending}"
     puts "Test time #{result}"
-    puts 'Bye!'
+    puts 'End'
 end
