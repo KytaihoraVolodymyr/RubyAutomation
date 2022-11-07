@@ -28,5 +28,6 @@ After do
     puts "Test start #{starting}"
     puts "Test end #{ending}"
     puts "Test time #{result}"
+    
     puts 'End'
 end
