@@ -1,19 +1,21 @@
-Given(/^I visit google$/) do
-    visit 'https://www.google.com'
+home_page = HomePage.new
+cats_list_page = CatsListPage.new
+cats_wiki_page = CatsWikiPage.new
+
+# Before do |scenario|
+#     p 'Hi Volod!'
+# end
+
+Given(/^I navigate to the Google homepage$/) do
+    home_page.load
+    home_page.displayed?
 end
 
-And(/^I search "([^"]*)"$/) do |query|
-
-    search_box = find('.gLFyf.gsfi')
-    search_btn = find('.gNO89b')
-    
-    search_box.set(query)
-    search_btn.click
-
-    paw = find('img.MsQkWd')
-    paw.click
+And(/^I search "([^"]*)" and click wiki link$/) do |query|
+    home_page.search_for(query)
+    cats_list_page.wiki_click
 end
 
-Then(/^I wait$/) do
-    sleep 5
+Then(/Wiki page is opened$/) do
+    expect(cats_wiki_page.title.text).to eq('Кіт свійський')
 end
