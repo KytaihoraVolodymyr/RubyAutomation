@@ -2,10 +2,6 @@ home_page = HomePage.new
 cats_list_page = CatsListPage.new
 cats_wiki_page = CatsWikiPage.new
 
-# Before do |scenario|
-#     p 'Hi Volod!'
-# end
-
 Given(/^I navigate to the Google homepage$/) do
     home_page.load
     home_page.displayed?

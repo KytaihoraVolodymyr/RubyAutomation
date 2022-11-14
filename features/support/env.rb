@@ -3,6 +3,7 @@ require 'selenium-webdriver'
 require 'pry'
 require 'rspec'
 require 'site_prism'
+require 'capybara-screenshot/cucumber'
 
 starting = Time.now
 
@@ -16,8 +17,10 @@ Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, {browser: :chrome, options: options })
 end
 
+Capybara.save_path = "./features/failure_screenshots"
+
 Before do |scenario|
-    p 'Before test'
+    puts 'Before test'
     starting = Process.clock_gettime(Process::CLOCK_MONOTONIC)
 end
 
