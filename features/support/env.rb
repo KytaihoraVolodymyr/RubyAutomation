@@ -4,6 +4,8 @@ require 'pry'
 require 'rspec'
 require 'site_prism'
 require 'capybara-screenshot/cucumber'
+require 'rubyXL'
+require 'rubyXL/convenience_methods'
 
 starting = Time.now
 
