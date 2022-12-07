@@ -1,4 +1,3 @@
-require 'test.xlsx'
 require 'rubyXL'
 require 'rubyXL/convenience_methods'
 
@@ -6,8 +5,8 @@ home_page = HomePage.new
 cats_list_page = CatsListPage.new
 cats_wiki_page = CatsWikiPage.new
 
-workbook = RubyXL::Parser.parse("/Users/vkytaiho/Desktop/RubyAutomation/test.xlsx")
-#workbook = RubyXL::Parser.parse("/test.xlsx")
+workbook = RubyXL::Parser.parse(File.join("./test.xlsx"))
+
 worksheet = workbook.worksheets[0]
 
 Given(/^I navigate to the Google homepage$/) do
@@ -16,13 +15,19 @@ Given(/^I navigate to the Google homepage$/) do
 end
 
 And(/^I search "([^"]*)" and click wiki link$/) do |query|
-    worksheet[3][1].change_contents(query)
-    workbook.write('./test.xlsx')
-
     home_page.search_for(query)
+
+    worksheet.insert_row(1)
+    worksheet.insert_cell(1, 0, query)
+    worksheet.insert_cell(1, 1, Time.new.strftime("%Y-%m-%d %H:%M:%S"))
+    worksheet.insert_cell(1, 2, 'Fail')
+    workbook.write("./test.xlsx")
+    
+    worksheet.insert_cell(1, 2, 'Pass')
     cats_list_page.wiki_click
 end
 
 Then(/Wiki page is opened$/) do
     expect(cats_wiki_page.title.text).to eq('Кіт свійський')
+    workbook.write("./test.xlsx")
 end
