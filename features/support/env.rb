@@ -20,6 +20,8 @@ Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, browser: browser)
 end
 
+BROWSER = Capybara.current_session.driver.browser.to_s
+
 Capybara.save_path = "./features/failure_screenshots"
 
 Before do |scenario|

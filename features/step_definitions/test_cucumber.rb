@@ -9,17 +9,20 @@ workbook = RubyXL::Parser.parse(File.join("./test.xlsx"))
 
 worksheet = workbook.worksheets[0]
 
-Given(/^I navigate to the Google homepage$/) do
+Given(/^Go to the Google homepage$/) do
     home_page.load
     home_page.displayed?
 end
 
-And(/^I search "([^"]*)" and click wiki link$/) do |query|
+And(/Search "([^"]*)" and click wiki link$/) do |query|
     home_page.search_for(query)
 
     worksheet.insert_row(1)
     worksheet.insert_cell(1, 0, query)
     worksheet.insert_cell(1, 1, Time.new.strftime("%Y-%m-%d %H:%M:%S"))
+
+    worksheet.insert_cell(1, 3, BROWSER)
+
     worksheet.insert_cell(1, 2, 'Fail')
     workbook.write("./test.xlsx")
     
