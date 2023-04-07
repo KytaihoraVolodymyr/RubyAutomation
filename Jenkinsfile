@@ -10,7 +10,7 @@ pipeline {
 
     stage('Run tests') {
       steps {
-        sh 'bundle exec cucumber --tags "@all and not @fail"'
+        sh 'cucumber --tags "@all and not @fail"'
       }
     }
   }
