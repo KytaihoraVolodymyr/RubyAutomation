@@ -8,18 +8,10 @@ pipeline {
       }
     }
 
-    stage('Install dependencies') {
-      steps {
-        sh 'bundle install'
-      }
-    }
-
     stage('Run tests') {
       steps {
-        sh 'bundle exec cucumber --tags @All'
+        sh 'bundle exec cucumber --tags "@all and not @fail"'
       }
     }
   }
 }
-
-

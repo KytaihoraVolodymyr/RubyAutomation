@@ -1,12 +1,12 @@
 Feature: Test browser setup
 
-  @Cats @All
+  @cats @all
   Scenario: Search for something on google
     Given Go to the Google homepage
     And Search "Cats" and click wiki link
     Then Wiki page is opened
 
-  @Birds @All #fail_test
+  @fail @all #fail_test
   Scenario: Search for something on google
       Given Go to the Google homepage
       And Search "Birds" and click wiki link

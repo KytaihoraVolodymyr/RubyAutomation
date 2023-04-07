@@ -1,5 +1,5 @@
 Feature: Test browser setup
-    @Autoria @All
+    @autoria @all
     Scenario: Search for something on google
         Given I navigate to the Google homepage
         And I search "Autoria" 
