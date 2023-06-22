@@ -1,8 +1,10 @@
 pipeline {
 
-  agent {
-    docker { image 'myproject' }
-  }
+  agent any
+
+  // agent {
+  //   docker { image 'myproject' }
+  // }
 
   stages {
     stage('Checkout') {
