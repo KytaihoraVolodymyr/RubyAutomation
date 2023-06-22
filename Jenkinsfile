@@ -8,6 +8,12 @@ pipeline {
       }
     }
 
+    stage {
+      steps {
+        sh 'bundle install'
+      }
+    }
+
     stage('Run tests') {
       steps {
         sh 'cucumber --tags "@all and not @fail"'
